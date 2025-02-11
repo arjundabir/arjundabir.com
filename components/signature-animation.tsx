@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./signature-animation.module.css";
-import { cn } from "@/lib/utils";
 
 const SignatureAnimation = () => {
   return (

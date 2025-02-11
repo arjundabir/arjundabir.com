@@ -1,9 +1,8 @@
-import React, { ElementType, SVGAttributes } from "react";
+import React from "react";
 import SignatureAnimation from "@/components/signature-animation";
 import ProjectsTable from "@/components/projects-table";
 import projects from "@/data/projects";
 import Link from "next/link";
-import { MailIcon } from "lucide-react";
 
 const Page = () => {
   return (
@@ -12,7 +11,7 @@ const Page = () => {
         <div className="flex flex-col justify-center h-screen">
           <div>
             <h1 className="font-medium" style={{ fontWeight: "500" }}>
-              Hey, I'm Arjun!
+              Hey, I&apos;m Arjun!
             </h1>
             <p>
               I love to build things.{" "}

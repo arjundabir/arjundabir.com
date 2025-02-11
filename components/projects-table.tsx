@@ -27,7 +27,7 @@ const ProjectsTable = ({ projects }: { projects: Project[] }) => (
             {React.isValidElement(project.icon) ? (
               project.icon
             ) : project.icon ? (
-              // @ts-ignore
+              // @ts-expect-error - lucide icon is not typed
               <project.icon size={20} />
             ) : null}
           </TableCell>

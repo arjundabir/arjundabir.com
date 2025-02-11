@@ -1,0 +1,71 @@
+.signaturePath {
+  width: 150px;
+  height: auto;
+}
+
+.signaturePath path {
+  fill: none;
+  stroke: #000;
+  line-cap: round;
+  line-join: round;
+  stroke-width: 8;
+}
+
+.signaturePath .cls1 {
+  --dash-value: 1200;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: calc(var(--dash-value) * -1);
+  animation: drawLogo 1s ease-in-out forwards;
+}
+
+.signaturePath .cls2 {
+  --dash-value: 5000;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: var(--dash-value);
+  animation: drawLogo 2s linear forwards 1s;
+}
+
+.signaturePath .cls3 {
+  --dash-value: 50;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: calc(var(--dash-value) * -1);
+  animation: drawLogo 0.1s ease-in-out forwards 1.75s;
+}
+
+.signaturePath .cls4 {
+  --dash-value: 200;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: calc(var(--dash-value));
+  animation: drawLogo 0.1s linear forwards 2.25s;
+}
+
+.signaturePath .cls5 {
+  --dash-value: 8000;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: calc(var(--dash-value));
+  animation: drawLogo 1.9s ease-in-out forwards 2.4s;
+}
+
+.signaturePath .cls6 {
+  --dash-value: 1500;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: calc(var(--dash-value));
+  animation: drawLogo 0.75s linear forwards 3.25s;
+}
+
+.signaturePath .cls7 {
+  --dash-value: 50;
+  stroke-dasharray: var(--dash-value);
+  stroke-dashoffset: calc(var(--dash-value) * -1);
+  animation: drawLogo 0.1s linear forwards 4.25s;
+}
+
+.signatureContainer:hover .signaturePath {
+  animation: drawLogo 0.1s linear forwards 4.25s;
+}
+
+@keyframes drawLogo {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

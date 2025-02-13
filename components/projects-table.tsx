@@ -31,14 +31,12 @@ const ProjectsTable = ({ projects }: { projects: Project[] }) => (
               <project.icon size={20} />
             ) : null}
           </TableCell>
-          <TableCell className="text-left  font-medium">
+          <TableCell className="text-left font-medium whitespace-nowrap">
             {project.title}
           </TableCell>
           <TableCell className="truncate">{project.description}</TableCell>
           <TableCell className="text-right">
-            <Link href={project.link} className="hover:underline">
-              {project.displayUrl}
-            </Link>
+            <Link href={project.link}>{project.displayUrl}</Link>
           </TableCell>
         </TableRow>
       ))}

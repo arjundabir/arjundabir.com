@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     icon: HeartIcon,
     title: "Gratitude at 7 PM",
-    description: "Write what you're grateful for at 7pm every day.",
+    description: "Write what you're grateful for at 7 pm every day.",
     link: "https://gratitudeatsevenpm.com",
     displayUrl: "gratitudeatsevenpm.com",
   },

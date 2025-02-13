@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CheckIcon, HeartIcon, type LucideIcon } from "lucide-react";
+import { Book, CheckIcon, HeartIcon, type LucideIcon } from "lucide-react";
 import React from "react";
 
 export type Project = {
@@ -46,6 +46,13 @@ export const projects: Project[] = [
     description: "My portfolio from 2023-2024.",
     link: "https://archive.arjundabir.com",
     displayUrl: "archive.arjundabir.com",
+  },
+  {
+    icon: Book,
+    title: "Blog",
+    description: "I write about things I find cool.",
+    link: "/blog",
+    displayUrl: "arjundabir.com/blog",
   },
 ];
 

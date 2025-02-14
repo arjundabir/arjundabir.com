@@ -1,5 +1,11 @@
 import Image from "next/image";
-import { Book, CheckIcon, HeartIcon, type LucideIcon } from "lucide-react";
+import {
+  Book,
+  CheckIcon,
+  HeartIcon,
+  Shirt,
+  type LucideIcon,
+} from "lucide-react";
 import React from "react";
 
 export type Project = {
@@ -26,7 +32,14 @@ export const projects: Project[] = [
     displayUrl: "todos.arjundabir.com",
   },
   {
-    icon: HeartIcon,
+    icon: (
+      <img
+        src="https://gratitudeatsevenpm.com/favicon.ico"
+        alt="gratitudeatsevenpm"
+        width={20}
+        height={20}
+      />
+    ),
     title: "Gratitude at 7 PM",
     description: "Write what you're grateful for at 7 pm every day.",
     link: "https://gratitudeatsevenpm.com",
@@ -53,6 +66,20 @@ export const projects: Project[] = [
     description: "I write about things I find cool.",
     link: "/blog",
     displayUrl: "arjundabir.com/blog",
+  },
+  {
+    icon: (
+      <img
+        src="https://arjuns-closet.netlify.app/favicon.ico"
+        alt="arjuns-closet"
+        width={20}
+        height={20}
+      />
+    ),
+    title: "Arjun's Closet",
+    description: "A fun way to choose what to wear.",
+    link: "https://arjuns-closet.netlify.app",
+    displayUrl: "arjuns-closet.netlify.app",
   },
 ];
 

@@ -13,7 +13,7 @@
 
 .signaturePath .cls1 {
   --dash-value: 1200;
-  stroke-dasharray: var(--dash-value);
+  stroke-dasharray: var(--dash-value) var(--dash-value);
   stroke-dashoffset: calc(var(--dash-value) * -1);
   animation: drawLogo 1s ease-in-out forwards;
 }

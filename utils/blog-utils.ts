@@ -29,7 +29,10 @@ export function getBlogPosts(): BlogPost[] {
       // Get title from first heading in markdown
       const { content } = matter(fileContents);
       const titleMatch = content.match(/^#\s+(.+)$/m);
-      const title = titleMatch ? titleMatch[1] : "Untitled";
+      const rawTitle = titleMatch ? titleMatch[1] : "Untitled";
+
+      // Strip markdown links, keeping only the link text
+      const title = rawTitle.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 
       return {
         title,

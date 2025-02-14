@@ -7,7 +7,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
-import { BlogPost } from "@/data/blog-posts";
+
+export interface BlogPost {
+  date: string;
+  title: string;
+  slug: string;
+}
 
 const BlogTable = ({ posts }: { posts: BlogPost[] }) => (
   <Table>

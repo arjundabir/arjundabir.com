@@ -1,0 +1,38 @@
+# First look into Markov Chains & Perplexity Deep Research
+
+I thought of a really cool application of Markov Chains in a project, I thought of it last night and couldn't sleep thinking about it so I did some research so I could implement the code.
+Also, yesterday Perplexity released their Deep Research, so I thought this would be a cool way to test it out.
+I'll post links of my Perplexity queries and their answers, but from reading [Make it Stick](https://www.amazon.com/Make-Stick-Science-Successful-Learning/dp/0674729013) by Henry L. Roediger III, Mark A. McDaniel, and Peter C. Brown, it's always a good idea to apply learned topics in a new setting to really understand it.
+
+<YouTube id="Z1_M2XtsUwY" caption="Perplexity marketing is so cool." />
+
+1. Asking o3-mini to make me a better query, [link](https://chatgpt.com/share/67b0fea5-fa48-8002-adee-d3a7a2e80243)
+2. Perplexity Deep Research, [link](https://www.perplexity.ai/search/research-query-understanding-a-1RW8np4ISeW7y_uEv6SntQ)
+3. [Brilliant.org](https://brilliant.org) also had a really good introductory lesson on Markov Chains. This is an artcile that they have publicly available, [link](https://www.perplexity.ai/search/research-query-understanding-a-1RW8np4ISeW7y_uEv6SntQ); I couldn't find the link to the exacty lesson.
+
+Markov Chains are stateless and have no memory from the past state.
+
+```math
+P(X_{n+1} = x_{n+1} | X_n = x_n, X_{n-1} = x_{n-1}, \ldots, X_0 = x_0) = P(X_{n+1} = x_{n+1} | X_n = x_n)
+```
+
+Thankfully, the equation is fairly basic. All it's saying is that the future state is the probability of the events in one state are the derived from the probability of the of the events happening in previous times the probability of the event at x+1.
+
+My next question is about the application of it. If at a probablilty I have a state with 2 different outcomes that are represented as the vector:
+
+```math
+\begin{bmatrix}
+0.5 \\
+0.5
+\end{bmatrix}
+```
+
+If I apply this in, for example, to predict weather with the top value representing it being sunny and the bottom value being it being rainy - what can I use with this?
+In a python script, do I add a random function that uses these 2 values to guess the chance of the weather being sunny or rainy.
+Knowing that weather channels commonly use markov chains, how are they so accurate? How does it account for constantly changing data?
+When arguments to the weather data change, does it recalculate the entire chain? I feel like that's incredibly computationally expensive... right?
+
+I'll add to this research tomorrow, I'm pushing myself to keep my research take an hour everyda to be able to manage this blog daily, or so.
+Hopefully, I can some answers tomorrow.
+
+Aside: Perplexity's Deep Research is pretty cool, but it's still very surface. I want to see how I can force it to be more in depth by adjusting my queries slightly.

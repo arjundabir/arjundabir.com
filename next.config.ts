@@ -1,4 +1,6 @@
-import createMDX from "@next/mdx";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import nextMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,8 +9,11 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
 };
 
-const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+const withMDX = nextMDX({
+  options: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [[rehypeKatex]],
+  },
 });
 
 // Merge MDX config with Next.js config

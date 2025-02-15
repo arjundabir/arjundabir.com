@@ -6,6 +6,7 @@ export default {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./blogs/**/*.{mdx,md}",
   ],
   theme: {
     extend: {
@@ -58,6 +59,18 @@ export default {
       },
     },
   },
-  safelist: ["text-blue-500", "text-lg", "font-medium", "mb-2"],
+  safelist: [
+    "text-blue-500",
+    "text-lg",
+    "font-medium",
+    "mb-2",
+    "aspect-video",
+    "h-96",
+    "my-2",
+    "text-center",
+    "list-decimal list-inside mb-4 space-y-2",
+    "text-gray-800",
+    "space-y-0",
+  ],
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

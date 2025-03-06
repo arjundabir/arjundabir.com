@@ -23,7 +23,7 @@ export const projects: Project[] = [
     icon: CheckIcon,
     title: "Todos",
     description: "Todo list like Linear.",
-    link: "https://todos.arjundabir.com/todo",
+    link: "https://todos.arjundabir.com",
     displayUrl: "todos.arjundabir.com",
   },
   {

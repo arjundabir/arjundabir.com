@@ -1,8 +1,6 @@
 import BlogTable from "@/components/blog-table";
 import FooterLogoAnimation from "@/components/footer-logo-animation";
-import LogoAnimation from "@/components/logo-animation";
 import { getBlogPosts } from "@/utils/blog-utils";
-import Link from "next/link";
 
 const BlogPage = () => {
   const posts = getBlogPosts();

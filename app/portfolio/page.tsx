@@ -16,7 +16,7 @@ export default function Home() {
       url: "https://4th-hurdle-media.netlify.app/",
     },
     {
-      title: "Zotistes",
+      title: "Zotsites",
       description: "Search engine for UCI students.",
       url: "https://zotsites.vercel.app",
     },

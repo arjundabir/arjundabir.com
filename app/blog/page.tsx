@@ -1,4 +1,5 @@
 import BlogTable from "@/components/blog-table";
+import FooterLogoAnimation from "@/components/footer-logo-animation";
 import LogoAnimation from "@/components/logo-animation";
 import { getBlogPosts } from "@/utils/blog-utils";
 import Link from "next/link";
@@ -12,11 +13,7 @@ const BlogPage = () => {
         <h1 className="font-medium mb-4">Blog</h1>
         <BlogTable posts={posts} />
       </div>
-      <footer className="flex-0 max-h-10 mt-auto">
-        <Link href="/">
-          <LogoAnimation />
-        </Link>
-      </footer>
+      <FooterLogoAnimation />
     </div>
   );
 };

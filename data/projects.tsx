@@ -1,11 +1,6 @@
 import Image from "next/image";
-import {
-  Book,
-  CheckIcon,
-  HeartIcon,
-  Shirt,
-  type LucideIcon,
-} from "lucide-react";
+import { Book, CheckIcon, type LucideIcon } from "lucide-react";
+import Favicon from "favicon.ico";
 import React from "react";
 
 export type Project = {
@@ -80,6 +75,20 @@ export const projects: Project[] = [
     description: "A fun way to choose what to wear.",
     link: "https://arjuns-closet.netlify.app",
     displayUrl: "arjuns-closet.netlify.app",
+  },
+  {
+    icon: (
+      <Image
+        src="/favicons/light-mode-favicon.png"
+        alt="portfolio"
+        width={20}
+        height={20}
+      />
+    ),
+    title: "Portfolio",
+    description: "A portfolio of websites I've built.",
+    link: "/portfolio",
+    displayUrl: "arjundabir.com/portfolio",
   },
 ];
 

@@ -15,7 +15,7 @@ const Page = () => {
             </h1>
             <p>
               I love to build things.{" "}
-              <Link href="mailto:arjundabir@gmail.com" className="underline">
+              <Link href="mailto:arjunadabir@gmail.com" className="underline">
                 Email Me
               </Link>{" "}
             </p>

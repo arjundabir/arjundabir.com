@@ -90,6 +90,20 @@ export const projects: Project[] = [
     link: "/portfolio",
     displayUrl: "arjundabir.com/portfolio",
   },
+  {
+    icon: (
+      <img
+        src="https://usa.arjundabir.com/favicon.ico"
+        alt="states i've visis"
+        width={20}
+        height={20}
+      />
+    ),
+    title: "States I've Visited",
+    description: "A map for the states I've been to.",
+    link: "https://usa.arjundabir.com",
+    displayUrl: "usa.arjundabir.com",
+  },
 ];
 
 export default projects;

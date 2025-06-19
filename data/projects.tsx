@@ -92,9 +92,10 @@ export const projects: Project[] = [
   },
   {
     icon: (
-      <img
-        src="https://usa.arjundabir.com/favicon.ico"
-        alt="states i've visis"
+      <Image
+        src="/favicons/light-mode-favicon.png"
+        alt="arjundabir"
+        className="invert ml-1"
         width={20}
         height={20}
       />

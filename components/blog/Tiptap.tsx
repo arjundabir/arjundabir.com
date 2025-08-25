@@ -6,16 +6,22 @@ import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { all, createLowlight } from "lowlight";
 import "highlight.js/styles/github.min.css";
 import { usePathname } from "next/navigation";
+import { useTiptap } from "./TiptapWrapper";
 
 const Tiptap = () => {
   const lowlight = createLowlight(all);
   const pathname = usePathname();
-  const dateId = pathname.split("/")[-1];
-  let content: string | null = "";
+  const dateId = pathname.split("/").at(-1);
+  const localStorageKey = `blog:drafts:${dateId}`;
+  const { setLoading } = useTiptap();
 
   const editor = useEditor({
-    onBeforeCreate: () => {
-      content = localStorage.getItem(`blog:drafts:${dateId}`);
+    onCreate: ({ editor }) => {
+      const savedContent = localStorage.getItem(localStorageKey);
+      const content = savedContent
+        ? JSON.parse(savedContent)
+        : `<h1>Hello World</h1>`;
+      editor.commands.setContent(content);
     },
     extensions: [
       CodeBlockLowlight.configure({
@@ -32,17 +38,17 @@ const Tiptap = () => {
         },
       }),
     ],
-    content: content
-      ? JSON.parse(content)
-      : `<h1>Hello World! 🌎️</h1>
-    <pre><code>function helloWorld(){}</code></pre>
-    `,
     immediatelyRender: false,
     autofocus: true,
     editorProps: {
       attributes: {
         class: "focus:outline-none",
       },
+    },
+    onUpdate: ({ editor }) => {
+      setLoading(true);
+      localStorage.setItem(localStorageKey, JSON.stringify(editor.getJSON()));
+      setLoading(false);
     },
   });
 

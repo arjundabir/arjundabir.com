@@ -34,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased overscroll-none`}>
+        {children}
+      </body>
       <GoogleAnalytics gaId="G-DSQEZ2WD77" />
     </html>
   );

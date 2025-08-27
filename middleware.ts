@@ -6,7 +6,11 @@ export function middleware(request: NextRequest) {
     const currentDate = new Date().toLocaleDateString("en-US", {
       timeZone: "America/Los_Angeles",
     });
-    const formattedDate = currentDate.replaceAll("/", "");
+    const [month, day, year] = currentDate.split("/");
+    const formattedDate = `${month.padStart(2, "0")}${day.padStart(
+      2,
+      "0"
+    )}${year}`;
     return NextResponse.redirect(
       new URL(`/blog/drafts/${formattedDate}`, request.url)
     );

@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from "react";
 
+export const BLOG_ARRAY_KEY = "blog:drafts";
+
 type tiptapContextType = {
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;

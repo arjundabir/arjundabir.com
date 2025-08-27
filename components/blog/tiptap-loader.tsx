@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2Icon } from "lucide-react";
-import { useTiptap } from "./TiptapWrapper";
+import { useTiptap } from "./tiptap-wrapper";
 
 export default function TiptapLoader() {
   const { loading } = useTiptap();

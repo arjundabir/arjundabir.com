@@ -6,7 +6,7 @@ import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { all, createLowlight } from "lowlight";
 import "highlight.js/styles/github.min.css";
 import { usePathname } from "next/navigation";
-import { useTiptap } from "./TiptapWrapper";
+import { BLOG_ARRAY_KEY, useTiptap } from "./tiptap-wrapper";
 
 const Tiptap = () => {
   const lowlight = createLowlight(all);
@@ -14,6 +14,18 @@ const Tiptap = () => {
   const dateId = pathname.split("/").at(-1);
   const localStorageKey = `blog:drafts:${dateId}`;
   const { setLoading } = useTiptap();
+
+  function addToBlogsList(blogKey: string): void {
+    const blogs = localStorage.getItem(BLOG_ARRAY_KEY);
+    if (blogs) {
+      const blogsList = JSON.parse(blogs) as string[];
+      const index = blogsList.indexOf(blogKey);
+      if (index === -1) {
+        blogsList.push(blogKey);
+        localStorage.setItem(BLOG_ARRAY_KEY, JSON.stringify(blogsList));
+      }
+    }
+  }
 
   const editor = useEditor({
     onCreate: ({ editor }) => {
@@ -48,6 +60,7 @@ const Tiptap = () => {
     onUpdate: ({ editor }) => {
       setLoading(true);
       localStorage.setItem(localStorageKey, JSON.stringify(editor.getJSON()));
+      addToBlogsList(localStorageKey);
       setLoading(false);
     },
   });

@@ -1,6 +1,6 @@
-import Tiptap from "@/components/blog/Tiptap";
-import TiptapLoader from "@/components/blog/TiptapLoader";
-import TiptapWrapper from "@/components/blog/TiptapWrapper";
+import Tiptap from "@/components/blog/tiptap";
+import TiptapLoader from "@/components/blog/tiptap-loader";
+import TiptapWrapper from "@/components/blog/tiptap-wrapper";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -19,7 +19,11 @@ export default function page() {
         <footer className="container mx-auto max-w-3xl flex justify-between items-center gap-1">
           <TiptapLoader />
           <div className="flex gap-1">
-            <Button variant={"secondary"}>Save Draft</Button>
+            <Button variant={"secondary"} asChild>
+              <Link href={"/blog/drafts"} className="hover:no-underline">
+                See Drafts
+              </Link>
+            </Button>
             <Button>Publish</Button>
           </div>
         </footer>

@@ -1,9 +1,9 @@
 import BlogTable from "@/components/blog-table";
 import FooterLogoAnimation from "@/components/footer-logo-animation";
-import { getBlogPosts } from "@/utils/blog-utils";
+import { getPosts } from "../actions";
 
-const BlogPage = () => {
-  const posts = getBlogPosts();
+const BlogPage = async () => {
+  const posts = await getPosts("published");
 
   return (
     <div className="container mx-auto max-w-screen-md flex flex-col justify-center h-svh">

@@ -8,12 +8,13 @@ import { all, createLowlight } from "lowlight";
 import "highlight.js/styles/github.min.css";
 import { usePathname } from "next/navigation";
 import { useTiptap } from "./tiptap-wrapper";
-import { getDraft, updateDraftContent } from "@/app/actions";
+import { getPost, updateDraftContent } from "@/app/actions";
 import debounce from "lodash.debounce";
 import { BlogPost } from "@/types/blog";
 import { toast } from "sonner";
+import Link from "@tiptap/extension-link";
 
-const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
+const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
   const lowlight = createLowlight(all);
   const pathname = usePathname();
   const dateId = pathname.split("/").at(-1) as string;
@@ -26,7 +27,7 @@ const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
           await updateDraftContent(dateId, editor.getHTML());
         } catch {
           toast.error("Document must contain a title");
-          const prevDraft = await getDraft(dateId);
+          const prevDraft = await getPost(dateId, "drafts");
           editor.commands.setContent(prevDraft?.content || "<h1></h1>");
         }
         setLoading(false);
@@ -47,8 +48,10 @@ const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
       StarterKit.configure({
         codeBlock: false,
       }),
+      Link,
     ],
-    content: draft?.content,
+    editable: post?.type === "published",
+    content: post?.content,
     immediatelyRender: false,
     autofocus: true,
     editorProps: {

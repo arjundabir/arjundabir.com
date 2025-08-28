@@ -1,6 +1,6 @@
-import { createDraft, getDraft } from "@/app/actions";
+import { createDraft, getPost } from "@/app/actions";
 import Tiptap from "@/components/blog/tiptap";
-import TiptapLoader from "@/components/blog/tiptap-loader";
+import TiptapFooter from "@/components/blog/tiptap-footer";
 import TiptapWrapper from "@/components/blog/tiptap-wrapper";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/types/blog";
@@ -14,7 +14,7 @@ export default async function page({
   const slug = (await params).date;
   const dateId = slug.split("/").at(-1) as string;
   let draft: BlogPost | undefined;
-  draft = await getDraft(dateId);
+  draft = await getPost(dateId, "drafts");
   if (!draft) {
     const year = dateId.slice(4, 8);
     const month = dateId.slice(0, 2);
@@ -30,9 +30,8 @@ export default async function page({
     };
 
     await createDraft(blog);
-    draft = await getDraft(dateId);
+    draft = await getPost(dateId, "drafts");
   }
-
   return (
     <main className="min-h-screen flex flex-col">
       <header>
@@ -42,18 +41,10 @@ export default async function page({
       </header>
       <TiptapWrapper>
         <div className="container mx-auto max-w-3xl grow">
-          <Tiptap draft={draft} />
+          <Tiptap post={draft} />
         </div>
         <footer className="container mx-auto max-w-3xl flex justify-between items-center gap-1">
-          <TiptapLoader />
-          <div className="flex gap-1">
-            <Button variant={"secondary"} asChild>
-              <Link href={"/blog/drafts"} className="hover:no-underline">
-                See Drafts
-              </Link>
-            </Button>
-            <Button>Publish</Button>
-          </div>
+          <TiptapFooter draft={draft} />
         </footer>
       </TiptapWrapper>
     </main>

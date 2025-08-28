@@ -7,19 +7,20 @@ import { eq } from "drizzle-orm";
 
 // blogs
 
-async function getDrafts() {
+async function getPosts(type: BlogPost["type"]) {
   return await db.query.posts.findMany({
-    where: (posts, { eq }) => eq(posts.type, "drafts"),
+    where: (posts, { eq }) => eq(posts.type, type!),
   });
 }
 
-async function getDraft(slug: string) {
+async function getPost(slug: BlogPost["slug"], type: BlogPost["type"]) {
   return await db.query.posts.findFirst({
-    where: (posts, { eq }) => eq(posts.slug, slug),
+    where: (posts, { eq, and }) =>
+      and(eq(posts.slug, slug), eq(posts.type, type!)),
   });
 }
 async function createDraft(blog: BlogPost) {
-  const draft = await getDraft(blog.slug);
+  const draft = await getPost(blog.slug, blog.type);
   if (!draft) await db.insert(posts).values(blog);
 }
 
@@ -45,8 +46,8 @@ async function updateDraftContent(slug: string, html: BlogPost["content"]) {
 }
 
 export {
-  getDrafts,
-  getDraft,
+  getPosts,
+  getPost,
   createDraft,
   deleteDraft,
   publishDraft,

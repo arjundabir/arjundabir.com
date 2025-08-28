@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1756328753632,
-      "tag": "0000_brave_goblin_queen",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1756398866539,
-      "tag": "0001_romantic_doctor_octopus",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1756399814449,
-      "tag": "0002_flawless_lord_tyger",
+      "when": 1756411817923,
+      "tag": "0000_fair_daredevil",
       "breakpoints": true
     }
   ]

@@ -1,9 +1,34 @@
 {
-  "id": "6823f95c-e7b7-49f6-9e44-03cb0a8ced29",
+  "id": "750fe80a-99f0-4cbe-a68d-0dc0a5d44c45",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.admins": {
+      "name": "admins",
+      "schema": "",
+      "columns": {
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.blogs": {
       "name": "blogs",
       "schema": "",
@@ -29,14 +54,15 @@
         },
         "type": {
           "name": "type",
-          "type": "text",
+          "type": "post_type",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "'drafts'"
         },
         "content": {
           "name": "content",
-          "type": "jsonb",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         }

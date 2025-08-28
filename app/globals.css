@@ -74,6 +74,33 @@ a {
   }
 }
 
+.tiptap {
+  h1 {
+    @apply text-lg font-medium mb-4 border-b;
+  }
+  h2 {
+    @apply text-base font-medium;
+  }
+  p {
+    code {
+      @apply border rounded-md py-0.5 px-1;
+    }
+    @apply my-2 mb-4;
+  }
+  a {
+    @apply text-blue-500 hover:underline hover:cursor-pointer;
+  }
+  ol {
+    @apply list-decimal list-inside mb-4 space-y-0;
+  }
+  li {
+    @apply text-gray-800;
+  }
+  pre {
+    @apply border rounded-md p-2;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

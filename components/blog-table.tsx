@@ -23,22 +23,31 @@ const BlogTable = ({ posts }: { posts: BlogPost[] }) => (
       </TableRow>
     </TableHeader>
     <TableBody>
-      {posts.map((post) => (
-        <TableRow key={post.slug} className="group">
-          <TableCell className="py-2 pr-4 align-top w-32">
-            {new Date(post.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </TableCell>
-          <TableCell>
-            <Link href={`/blog/${post.slug}`} className="group-hover:underline">
-              {post.title}
-            </Link>
-          </TableCell>
+      {posts && posts.length > 0 ? (
+        posts?.map((post) => (
+          <TableRow key={post.slug} className="group">
+            <TableCell className="py-2 pr-4 align-top w-32">
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </TableCell>
+            <TableCell>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group-hover:underline"
+              >
+                {post.title}
+              </Link>
+            </TableCell>
+          </TableRow>
+        ))
+      ) : (
+        <TableRow>
+          <TableCell>No Posts Yet</TableCell>
         </TableRow>
-      ))}
+      )}
     </TableBody>
   </Table>
 );

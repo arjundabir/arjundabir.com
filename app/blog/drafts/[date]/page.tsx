@@ -1,6 +1,6 @@
 import { createDraft, getPost } from "@/app/actions";
 import BackButton from "@/components/blog/back-button";
-import Tiptap from "@/components/blog/tiptap";
+import Tiptap from "@/components/blog/Tiptap";
 import TiptapFooter from "@/components/blog/tiptap-footer";
 import TiptapWrapper from "@/components/blog/tiptap-wrapper";
 import { BlogPost } from "@/types/blog";

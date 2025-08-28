@@ -51,8 +51,8 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
                 variant={"ghost"}
                 size={"icon"}
                 className="h-full w-auto hover:text-destructive"
-                onClick={() => {
-                  deleteDraft(post.slug);
+                onClick={async () => {
+                  await deleteDraft(post.slug);
                   router.refresh();
                 }}
               >
@@ -63,8 +63,8 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
                 variant={"ghost"}
                 size={"icon"}
                 className="h-full w-auto data-[type='drafts']:hover:text-green-500 data-[type='published']:hover:text-destructive"
-                onClick={() => {
-                  switchDraftType(post.slug);
+                onClick={async () => {
+                  await switchDraftType(post.slug);
                   router.refresh();
                 }}
               >

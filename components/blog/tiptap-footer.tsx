@@ -4,7 +4,7 @@ import { Loader2Icon } from "lucide-react";
 import { useTiptap } from "./tiptap-wrapper";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { publishDraft } from "@/app/actions";
+import { switchDraftType } from "@/app/actions";
 import { BlogPost } from "@/types/blog";
 import { useRouter } from "next/navigation";
 
@@ -33,7 +33,7 @@ export default function TiptapFooter({
         <Button
           onClick={() => {
             if (draft) {
-              publishDraft(draft?.slug);
+              switchDraftType(draft?.slug);
             }
             router.push("/blog");
           }}

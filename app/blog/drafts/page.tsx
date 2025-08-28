@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export default async function page() {
   const drafts = await getPosts("drafts");
+  const publishesd = await getPosts("published");
   return (
     <div className="container mx-auto max-w-screen-md flex flex-col justify-center h-svh">
       <div className="mt-auto">
@@ -26,6 +27,8 @@ export default async function page() {
           </div>
         </div>
         <DraftsTable drafts={drafts} />
+        <h1 className="font-medium mb-4">Published</h1>
+        <DraftsTable drafts={publishesd} />
       </div>
       <FooterLogoAnimation />
     </div>

@@ -50,7 +50,7 @@ const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
       }),
       Link,
     ],
-    editable: post?.type === "published",
+    editable: post?.type === "drafts",
     content: post?.content,
     immediatelyRender: false,
     autofocus: true,

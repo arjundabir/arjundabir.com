@@ -10,9 +10,9 @@ import {
   TableCell,
 } from "../ui/table";
 import Link from "next/link";
-import { BookmarkCheckIcon, TrashIcon } from "lucide-react";
+import { BookmarkCheckIcon, BookmarkMinusIcon, TrashIcon } from "lucide-react";
 import { Button } from "../ui/button";
-import { deleteDraft, publishDraft } from "@/app/actions";
+import { deleteDraft, switchDraftType } from "@/app/actions";
 import { useRouter } from "next/navigation";
 
 export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
@@ -38,7 +38,9 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
             </TableCell>
             <TableCell>
               <Link
-                href={`/blog/drafts/${post.slug}`}
+                href={`/blog${post.type === "drafts" ? "/drafts" : ""}/${
+                  post.slug
+                }`}
                 className="group-hover:underline"
               >
                 {post.title}
@@ -57,15 +59,20 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
                 <TrashIcon />
               </Button>
               <Button
+                data-type={post.type}
                 variant={"ghost"}
                 size={"icon"}
-                className="h-full w-auto hover:text-green-500"
+                className="h-full w-auto data-[type='drafts']:hover:text-green-500 data-[type='published']:hover:text-destructive"
                 onClick={() => {
-                  publishDraft(post.slug);
+                  switchDraftType(post.slug);
                   router.refresh();
                 }}
               >
-                <BookmarkCheckIcon className="" />
+                {post.type === "drafts" ? (
+                  <BookmarkCheckIcon />
+                ) : (
+                  <BookmarkMinusIcon />
+                )}
               </Button>
             </TableCell>
           </TableRow>

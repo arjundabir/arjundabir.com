@@ -1,9 +1,11 @@
-import { pgTable, varchar, text, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, varchar, text, jsonb, pgEnum } from "drizzle-orm/pg-core";
+
+const postTypeEnum = pgEnum("type", ["drafts", "published"]);
 
 export const posts = pgTable("blogs", {
-  slug: varchar({ length: 32 }).primaryKey(),
-  date: varchar({ length: 8 }).notNull(),
+  slug: varchar({ length: "YYYYMMDD".length }).primaryKey(),
+  date: varchar({ length: "YYYY-MM-DD".length }).notNull(),
   title: text().notNull().default("Hello World"),
-  type: text().notNull().default("drafts"),
+  type: postTypeEnum("type").notNull().default("drafts"),
   content: jsonb("content"),
 });

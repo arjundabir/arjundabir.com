@@ -88,7 +88,7 @@ a {
     @apply my-2 mb-4;
   }
   a {
-    @apply text-blue-500 hover:underline;
+    @apply text-blue-500 hover:underline hover:cursor-pointer;
   }
   ol {
     @apply list-decimal list-inside mb-4 space-y-0;

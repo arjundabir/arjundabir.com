@@ -21,11 +21,13 @@ async function createDraft(blog: BlogPost) {
   if (!draft) await db.insert(posts).values(blog);
 }
 
-async function updateDraftContent(slug: string, content: BlogPost["content"]) {
+async function updateDraftContent(slug: string, html: BlogPost["content"]) {
+  const h1Text = html?.match(/<h1>(.*?)<\/h1>/);
+  if (!h1Text) throw Error("Document must contain a title");
   try {
     await db
       .update(posts)
-      .set({ content: content })
+      .set({ title: h1Text![1], content: html })
       .where(eq(posts.slug, slug));
   } catch (e) {
     console.error(e);

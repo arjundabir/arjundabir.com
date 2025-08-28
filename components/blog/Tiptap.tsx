@@ -1,16 +1,17 @@
 "use client";
 
 import { useMemo } from "react";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { all, createLowlight } from "lowlight";
 import "highlight.js/styles/github.min.css";
 import { usePathname } from "next/navigation";
 import { useTiptap } from "./tiptap-wrapper";
-import { updateDraftContent } from "@/app/actions";
+import { getDraft, updateDraftContent } from "@/app/actions";
 import debounce from "lodash.debounce";
 import { BlogPost } from "@/types/blog";
+import { toast } from "sonner";
 
 const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
   const lowlight = createLowlight(all);
@@ -20,8 +21,14 @@ const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
 
   const debouncedUpdateDraftContent = useMemo(
     () =>
-      debounce(async (html: BlogPost["content"]) => {
-        await updateDraftContent(dateId, html);
+      debounce(async (editor: Editor) => {
+        try {
+          await updateDraftContent(dateId, editor.getHTML());
+        } catch {
+          toast.error("Document must contain a title");
+          const prevDraft = await getDraft(dateId);
+          editor.commands.setContent(prevDraft?.content || "<h1></h1>");
+        }
         setLoading(false);
       }, 500),
 
@@ -51,7 +58,7 @@ const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
     },
     onUpdate: async ({ editor }) => {
       setLoading(true);
-      debouncedUpdateDraftContent(editor.getHTML());
+      debouncedUpdateDraftContent(editor);
     },
   });
 

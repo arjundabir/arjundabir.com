@@ -8,9 +8,9 @@ import { z } from "zod";
 import bcrypt from "bcrypt";
 import { createSession } from "@/lib/admin/session";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 // blogs
-
 async function getPosts(type: BlogPost["type"]) {
   return await db.query.posts.findMany({
     where: (posts, { eq }) => eq(posts.type, type!),
@@ -30,6 +30,8 @@ async function createDraft(blog: BlogPost) {
 
 async function deleteDraft(slug: BlogPost["slug"]) {
   await db.delete(posts).where(eq(posts.slug, slug));
+  revalidatePath("/blog/drafts");
+  revalidatePath("/blog");
 }
 
 async function switchDraftType(slug: BlogPost["slug"]) {
@@ -39,6 +41,8 @@ async function switchDraftType(slug: BlogPost["slug"]) {
   if (!post) throw new Error("Post not found");
   const newType = post.type === "drafts" ? "published" : "drafts";
   await db.update(posts).set({ type: newType }).where(eq(posts.slug, slug));
+  revalidatePath("/blog/drafts");
+  revalidatePath("/blog");
 }
 
 async function updateDraftContent(slug: string, html: BlogPost["content"]) {
@@ -49,6 +53,8 @@ async function updateDraftContent(slug: string, html: BlogPost["content"]) {
       .update(posts)
       .set({ title: h1Text![1], content: html })
       .where(eq(posts.slug, slug));
+    revalidatePath(`/blog/drafts/${slug}`);
+    revalidatePath("/blog/drafts");
   } catch (e) {
     console.error(e);
   }

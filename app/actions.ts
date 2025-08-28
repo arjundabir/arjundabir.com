@@ -5,6 +5,8 @@ import { posts } from "@/lib/db/schema";
 import { BlogPost } from "@/types/blog";
 import { eq } from "drizzle-orm";
 
+// blogs
+
 async function getDrafts() {
   return await db.query.posts.findMany({
     where: (posts, { eq }) => eq(posts.type, "drafts"),
@@ -21,6 +23,14 @@ async function createDraft(blog: BlogPost) {
   if (!draft) await db.insert(posts).values(blog);
 }
 
+async function deleteDraft(slug: BlogPost["slug"]) {
+  await db.delete(posts).where(eq(posts.slug, slug));
+}
+
+async function publishDraft(slug: BlogPost["slug"]) {
+  await db.update(posts).set({ type: "published" }).where(eq(posts.slug, slug));
+}
+
 async function updateDraftContent(slug: string, html: BlogPost["content"]) {
   const h1Text = html?.match(/<h1>(.*?)<\/h1>/);
   if (!h1Text) throw Error("Document must contain a title");
@@ -34,4 +44,11 @@ async function updateDraftContent(slug: string, html: BlogPost["content"]) {
   }
 }
 
-export { getDrafts, getDraft, createDraft, updateDraftContent };
+export {
+  getDrafts,
+  getDraft,
+  createDraft,
+  deleteDraft,
+  publishDraft,
+  updateDraftContent,
+};

@@ -17,15 +17,27 @@ export default function Page() {
           <label htmlFor="username" className="font-medium">
             Username
           </label>
-          <Input id="username" name="username" className="w-full" />
+          <Input
+            id="username"
+            name="username"
+            className="w-full"
+            autoComplete="username"
+            autoFocus
+          />
         </div>
         <div>
           <label htmlFor="password" className="font-medium">
             Password
           </label>
-          <Input id="password" name="password" />
+          <Input
+            id="password"
+            name="password"
+            autoComplete="current-password"
+          />
         </div>
-        <Button className="w-[78.85px]">Submit</Button>
+        <Button className="w-[78.85px]" type="submit">
+          Submit
+        </Button>
       </form>
       <FooterLogoAnimation />
     </div>

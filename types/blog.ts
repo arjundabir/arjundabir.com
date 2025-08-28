@@ -1,7 +1,5 @@
-type BlogPost = {
-  title: string;
-  date: string;
-  slug: string;
-};
+import { posts } from "@/lib/db/schema";
+
+type BlogPost = typeof posts.$inferInsert;
 
 export type { BlogPost };

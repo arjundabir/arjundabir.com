@@ -1,39 +1,49 @@
 "use client";
 
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useMemo } from "react";
+import { useEditor, EditorContent, Content } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { all, createLowlight } from "lowlight";
 import "highlight.js/styles/github.min.css";
 import { usePathname } from "next/navigation";
-import { BLOG_ARRAY_KEY, useTiptap } from "./tiptap-wrapper";
+import { useTiptap } from "./tiptap-wrapper";
+import { createDraft, updateDraftContent } from "@/app/actions";
+import debounce from "lodash.debounce";
+import { BlogPost } from "@/types/blog";
 
-const Tiptap = () => {
+const Tiptap = ({ draft }: { draft: BlogPost | undefined }) => {
   const lowlight = createLowlight(all);
   const pathname = usePathname();
-  const dateId = pathname.split("/").at(-1);
-  const localStorageKey = `blog:drafts:${dateId}`;
+  const dateId = pathname.split("/").at(-1) as string;
   const { setLoading } = useTiptap();
 
-  function addToBlogsList(blogKey: string): void {
-    const blogs = localStorage.getItem(BLOG_ARRAY_KEY);
-    if (blogs) {
-      const blogsList = JSON.parse(blogs) as string[];
-      const index = blogsList.indexOf(blogKey);
-      if (index === -1) {
-        blogsList.push(blogKey);
-        localStorage.setItem(BLOG_ARRAY_KEY, JSON.stringify(blogsList));
-      }
-    }
-  }
+  const debouncedUpdateDraftContent = useMemo(
+    () =>
+      debounce(async (json: object) => {
+        await updateDraftContent(dateId, json);
+        setLoading(false);
+      }, 500),
+
+    [setLoading, dateId]
+  );
 
   const editor = useEditor({
-    onCreate: ({ editor }) => {
-      const savedContent = localStorage.getItem(localStorageKey);
-      const content = savedContent
-        ? JSON.parse(savedContent)
-        : `<h1>Hello World</h1>`;
-      editor.commands.setContent(content);
+    onBeforeCreate: async () => {
+      const year = dateId.slice(4, 8);
+      const month = dateId.slice(0, 2);
+      const day = dateId.slice(2, 4);
+      const date = `${year}-${month}-${day}`;
+
+      const blog = {
+        slug: dateId,
+        date,
+        title: "Hello World",
+        type: "drafts",
+        content: {},
+      };
+
+      createDraft(blog);
     },
     extensions: [
       CodeBlockLowlight.configure({
@@ -50,6 +60,7 @@ const Tiptap = () => {
         },
       }),
     ],
+    content: draft?.content as Content,
     immediatelyRender: false,
     autofocus: true,
     editorProps: {
@@ -57,11 +68,10 @@ const Tiptap = () => {
         class: "focus:outline-none",
       },
     },
-    onUpdate: ({ editor }) => {
+    onUpdate: async ({ editor }) => {
       setLoading(true);
-      localStorage.setItem(localStorageKey, JSON.stringify(editor.getJSON()));
-      addToBlogsList(localStorageKey);
-      setLoading(false);
+      debouncedUpdateDraftContent(editor.getJSON());
+      // throttledUpdateDraftContent(editor.getJSON());
     },
   });
 

@@ -1,8 +1,9 @@
-import { getDraft } from "@/app/actions";
+import { createDraft, getDraft } from "@/app/actions";
 import Tiptap from "@/components/blog/tiptap";
 import TiptapLoader from "@/components/blog/tiptap-loader";
 import TiptapWrapper from "@/components/blog/tiptap-wrapper";
 import { Button } from "@/components/ui/button";
+import { BlogPost } from "@/types/blog";
 import Link from "next/link";
 
 export default async function page({
@@ -12,7 +13,25 @@ export default async function page({
 }) {
   const slug = (await params).date;
   const dateId = slug.split("/").at(-1) as string;
-  const draft = await getDraft(dateId);
+  let draft: BlogPost | undefined;
+  draft = await getDraft(dateId);
+  if (!draft) {
+    const year = dateId.slice(4, 8);
+    const month = dateId.slice(0, 2);
+    const day = dateId.slice(2, 4);
+    const date = `${year}-${month}-${day}`;
+
+    const blog: BlogPost = {
+      slug: dateId,
+      date,
+      title: "Hello World",
+      type: "drafts",
+      content: `<h1>Hello World</h1>`,
+    };
+
+    await createDraft(blog);
+    draft = await getDraft(dateId);
+  }
 
   return (
     <main className="min-h-screen flex flex-col">

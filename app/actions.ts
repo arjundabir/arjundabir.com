@@ -21,7 +21,7 @@ async function createDraft(blog: BlogPost) {
   if (!draft) await db.insert(posts).values(blog);
 }
 
-async function updateDraftContent(slug: string, content: object) {
+async function updateDraftContent(slug: string, content: BlogPost["content"]) {
   try {
     await db
       .update(posts)

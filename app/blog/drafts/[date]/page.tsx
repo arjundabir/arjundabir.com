@@ -1,10 +1,9 @@
 import { createDraft, getPost } from "@/app/actions";
+import BackButton from "@/components/blog/back-button";
 import Tiptap from "@/components/blog/tiptap";
 import TiptapFooter from "@/components/blog/tiptap-footer";
 import TiptapWrapper from "@/components/blog/tiptap-wrapper";
-import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/types/blog";
-import Link from "next/link";
 
 export default async function page({
   params,
@@ -35,9 +34,7 @@ export default async function page({
   return (
     <main className="min-h-screen flex flex-col">
       <header>
-        <Button variant={"link"} asChild>
-          <Link href={"/blog/drafts"}>Back</Link>
-        </Button>
+        <BackButton />
       </header>
       <TiptapWrapper>
         <div className="container mx-auto max-w-3xl grow">

@@ -28,6 +28,7 @@
     "dotenv": "^17.2.1",
     "drizzle-orm": "^0.44.5",
     "gray-matter": "^4.0.3",
+    "lodash.debounce": "^4.0.8",
     "lowlight": "^3.3.0",
     "lucide-react": "^0.475.0",
     "marked": "^15.0.7",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

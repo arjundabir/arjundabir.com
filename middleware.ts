@@ -8,7 +8,10 @@ export async function middleware(request: NextRequest) {
   const cookie = (await cookies()).get("session")?.value;
   const session = await decrypt(cookie);
   const path = request.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.includes(path);
+  console.log(path);
+  const isProtectedRoute = protectedRoutes.some((protectedRoute) =>
+    path.includes(protectedRoute)
+  );
 
   if (path.includes("/admin") && session) {
     return NextResponse.redirect(new URL("/", request.nextUrl));

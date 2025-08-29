@@ -32,7 +32,7 @@ export default async function page({
     draft = await getPost(dateId, "drafts");
   }
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-svh flex flex-col">
       <header>
         <BackButton />
       </header>

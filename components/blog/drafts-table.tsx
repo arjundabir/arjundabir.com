@@ -30,7 +30,7 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
         {drafts.map((post) => (
           <TableRow
             key={post.slug}
-            className="group grid grid-cols-[min-content_1fr_min-content]"
+            className="group grid grid-cols-[13ch_1fr_min-content]"
           >
             <TableCell className="py-2 pr-4 whitespace-nowrap">
               {new Date(post.date).toLocaleDateString("en-US", {

@@ -8,8 +8,8 @@ import LinkedIn from "@/components/icons/linkedin-icon";
 
 const Page = () => {
   return (
-    <div className="h-screen grid place-content-center">
-      <div className="h-full max-w-screen-md ">
+    <div className="h-svh grid place-content-center">
+      <div className="h-full max-w-screen-md w-full overflow-x-auto">
         <div className="flex flex-col justify-center h-full">
           <div>
             <h1 className="font-medium" style={{ fontWeight: "500" }}>

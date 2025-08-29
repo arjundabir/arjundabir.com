@@ -28,15 +28,18 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
       </TableHeader>
       <TableBody>
         {drafts.map((post) => (
-          <TableRow key={post.slug} className="group">
-            <TableCell className="py-2 pr-4 align-top w-32">
+          <TableRow
+            key={post.slug}
+            className="group grid grid-cols-[min-content_1fr_min-content]"
+          >
+            <TableCell className="py-2 pr-4 whitespace-nowrap">
               {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
               })}
             </TableCell>
-            <TableCell>
+            <TableCell className="truncate">
               <Link
                 href={`/blog${post.type === "drafts" ? "/drafts" : ""}/${
                   post.slug
@@ -46,7 +49,7 @@ export default function DraftsTable({ drafts }: { drafts: BlogPost[] }) {
                 {post.title}
               </Link>
             </TableCell>
-            <TableCell className="hidden justify-end group-hover:flex">
+            <TableCell className="whitespace-nowrap flex items-center invisible group-hover:visible">
               <Button
                 variant={"ghost"}
                 size={"icon"}

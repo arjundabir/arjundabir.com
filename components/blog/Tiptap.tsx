@@ -14,7 +14,6 @@ import { BlogPost } from "@/types/blog";
 import { toast } from "sonner";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
-import { styleText } from "util";
 
 const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
   const lowlight = createLowlight(all);

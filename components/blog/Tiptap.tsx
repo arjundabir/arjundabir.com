@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useEditor, EditorContent, Editor } from "@tiptap/react";
+import { useEditor, EditorContent, Editor, nodeInputRule } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { all, createLowlight } from "lowlight";
@@ -13,6 +13,7 @@ import debounce from "lodash.debounce";
 import { BlogPost } from "@/types/blog";
 import { toast } from "sonner";
 import Link from "@tiptap/extension-link";
+import Youtube from "@tiptap/extension-youtube";
 
 const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
   const lowlight = createLowlight(all);
@@ -49,6 +50,24 @@ const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
         codeBlock: false,
       }),
       Link,
+      Youtube.configure({
+        progressBarColor: "white",
+        HTMLAttributes: {
+          class: "w-full aspect-video h-auto",
+        },
+      }).extend({
+        addInputRules() {
+          return [
+            nodeInputRule({
+              find: /(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/,
+              type: this.type,
+              getAttributes: (match) => ({
+                src: match[0],
+              }),
+            }),
+          ];
+        },
+      }),
     ],
     editable: post?.type === "drafts",
     content: post?.content,

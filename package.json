@@ -19,6 +19,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tiptap/extension-code-block-lowlight": "^3.2.0",
     "@tiptap/extension-link": "^3.3.0",
+    "@tiptap/extension-youtube": "^3.3.1",
     "@tiptap/pm": "^3.2.0",
     "@tiptap/react": "^3.2.0",
     "@tiptap/starter-kit": "^3.2.0",

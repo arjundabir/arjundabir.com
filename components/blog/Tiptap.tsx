@@ -14,6 +14,7 @@ import { BlogPost } from "@/types/blog";
 import { toast } from "sonner";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
+import Mathematics from "@tiptap/extension-mathematics";
 
 const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
   const lowlight = createLowlight(all);
@@ -39,6 +40,7 @@ const Tiptap = ({ post }: { post: BlogPost | undefined }) => {
 
   const editor = useEditor({
     extensions: [
+      Mathematics,
       CodeBlockLowlight.configure({
         lowlight,
         defaultLanguage: "javascript",

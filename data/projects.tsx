@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Book, CheckIcon, type LucideIcon } from "lucide-react";
-import Favicon from "favicon.ico";
-import React from "react";
+import Image from 'next/image';
+import { Book, CheckIcon, type LucideIcon } from 'lucide-react';
+import Favicon from 'favicon.ico';
+import React from 'react';
 
 export type Project = {
   icon?: LucideIcon | React.ReactNode;
@@ -14,17 +14,17 @@ export type Project = {
 export const projects: Project[] = [
   {
     icon: <Image src="/zotsites.svg" alt="zotsites" width={20} height={20} />,
-    title: "Zotsites",
-    description: "Search Engine for UCI students.",
-    link: "https://zotsites.com",
-    displayUrl: "zotsites.com",
+    title: 'Zotsites',
+    description: 'Search Engine for UCI students.',
+    link: 'https://zotsites.com',
+    displayUrl: 'zotsites.com',
   },
   {
     icon: CheckIcon,
-    title: "Todos",
-    description: "Todo list like Linear.",
-    link: "https://todos.arjundabir.com",
-    displayUrl: "todos.arjundabir.com",
+    title: 'Todos',
+    description: 'Todo list like Linear.',
+    link: 'https://todos.arjundabir.com',
+    displayUrl: 'todos.arjundabir.com',
   },
   {
     icon: (
@@ -35,10 +35,10 @@ export const projects: Project[] = [
         height={20}
       />
     ),
-    title: "Gratitude at 7 PM",
+    title: 'Gratitude at 7 PM',
     description: "Write what you're grateful for at 7 pm every day.",
-    link: "https://gratitudeatsevenpm.com",
-    displayUrl: "gratitudeatsevenpm.com",
+    link: 'https://gratitudeatsevenpm.com',
+    displayUrl: 'gratitudeatsevenpm.com',
   },
   {
     icon: (
@@ -50,17 +50,17 @@ export const projects: Project[] = [
         height={20}
       />
     ),
-    title: "Archive",
-    description: "My portfolio from 2023-2024.",
-    link: "https://archive.arjundabir.com",
-    displayUrl: "archive.arjundabir.com",
+    title: 'Archive',
+    description: 'My portfolio from 2023-2024.',
+    link: 'https://archive.arjundabir.com',
+    displayUrl: 'archive.arjundabir.com',
   },
   {
     icon: Book,
-    title: "Blog",
-    description: "I write about things I find cool.",
-    link: "/blog",
-    displayUrl: "arjundabir.com/blog",
+    title: 'Blog',
+    description: 'I write about things I find cool.',
+    link: '/blog',
+    displayUrl: 'arjundabir.com/blog',
   },
   {
     icon: (
@@ -72,9 +72,9 @@ export const projects: Project[] = [
       />
     ),
     title: "Arjun's Closet",
-    description: "A fun way to choose what to wear.",
-    link: "https://arjuns-closet.netlify.app",
-    displayUrl: "arjuns-closet.netlify.app",
+    description: 'A fun way to choose what to wear.',
+    link: 'https://arjuns-closet.netlify.app',
+    displayUrl: 'arjuns-closet.netlify.app',
   },
   {
     icon: (
@@ -85,10 +85,10 @@ export const projects: Project[] = [
         height={20}
       />
     ),
-    title: "Portfolio",
+    title: 'Portfolio',
     description: "A portfolio of websites I've built.",
-    link: "/portfolio",
-    displayUrl: "arjundabir.com/portfolio",
+    link: '/portfolio',
+    displayUrl: 'arjundabir.com/portfolio',
   },
   {
     icon: (
@@ -102,8 +102,23 @@ export const projects: Project[] = [
     ),
     title: "States I've Visited",
     description: "A map for the states I've been to.",
-    link: "https://usa.arjundabir.com",
-    displayUrl: "usa.arjundabir.com",
+    link: 'https://usa.arjundabir.com',
+    displayUrl: 'usa.arjundabir.com',
+  },
+  {
+    icon: (
+      <Image
+        src="/favicons/light-mode-favicon.png"
+        alt="arjundabir"
+        className="invert ml-1"
+        width={20}
+        height={20}
+      />
+    ),
+    title: 'Animate Signature',
+    description: 'Convert your signature to HTML & CSS',
+    link: 'https://signature.arjundabir.com',
+    displayUrl: 'signature.arjundabir.com',
   },
 ];
 

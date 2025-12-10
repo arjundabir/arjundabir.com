@@ -123,8 +123,8 @@ export const projects: Project[] = [
   {
     title: 'ChatGPT Wrapped',
     description: 'Spotify wrapped but for ChatGPT (unofficial)',
-    link: 'https://chatgptwrapped.arjundabir.com',
-    displayUrl: 'chatgptwrapped.arjundabir.com',
+    link: 'https://wrapped.arjundabir.com',
+    displayUrl: 'wrapped.arjundabir.com',
   },
 ];
 

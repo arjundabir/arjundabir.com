@@ -1,5 +1,5 @@
 // tslint:disable:no-http-string
-import * as React from "react";
+import * as React from 'react';
 
 const LinkedIn: React.FC<{ className?: string }> = ({ className }) => (
   <svg
@@ -23,7 +23,6 @@ const LinkedIn: React.FC<{ className?: string }> = ({ className }) => (
         fontFamily="none"
         fontWeight="none"
         fontSize="none"
-        textAnchor="none"
       >
         <path d="M0,192v-192h192v192z" fill="none"></path>
         <g fill="currentColor">

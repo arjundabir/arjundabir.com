@@ -36,7 +36,7 @@
     "lowlight": "^3.3.0",
     "lucide-react": "^0.475.0",
     "marked": "^15.0.7",
-    "next": "^15.4.6",
+    "next": "15.4.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rehype-katex": "^7.0.1",

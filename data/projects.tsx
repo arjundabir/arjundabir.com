@@ -126,6 +126,20 @@ export const projects: Project[] = [
     link: 'https://wrapped.arjundabir.com',
     displayUrl: 'wrapped.arjundabir.com',
   },
+  {
+    icon: (
+      <Image
+        src="/favicons/light-mode-favicon.png"
+        alt="speaker series"
+        width={20}
+        height={20}
+      />
+    ),
+    title: 'Speaker Series',
+    description: 'Resources from the speaker series.',
+    link: '/speakerseries',
+    displayUrl: 'arjundabir.com/speakerseries',
+  },
 ];
 
 export default projects;

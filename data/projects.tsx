@@ -28,20 +28,6 @@ export const projects: Project[] = [
   },
   {
     icon: (
-      <img
-        src="https://gratitudeatsevenpm.com/favicon.ico"
-        alt="gratitudeatsevenpm"
-        width={20}
-        height={20}
-      />
-    ),
-    title: 'Gratitude at 7 PM',
-    description: "Write what you're grateful for at 7 pm every day.",
-    link: 'https://gratitudeatsevenpm.com',
-    displayUrl: 'gratitudeatsevenpm.com',
-  },
-  {
-    icon: (
       <Image
         src="/favicons/light-mode-favicon.png"
         alt="arjundabir"

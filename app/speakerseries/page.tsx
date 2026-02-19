@@ -208,6 +208,16 @@ export default function SpeakerSeriesPage() {
         <div className="container mx-auto max-w-screen-md w-full">
           <h1 className="text-base font-medium mb-6">Speaker Series</h1>
 
+          <Link
+            href="https://docs.google.com/presentation/d/1zDYAQAAg2r3vzHAeVNEIImYrIIKJBuW0uwik1MQpOjY/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-baseline justify-between gap-4 py-2 px-2 -mx-2 rounded hover:bg-gray-50 transition-colors duration-150 group !no-underline mb-6 border-b border-gray-100"
+          >
+            <span className="text-sm text-gray-900 group-hover:underline">Designing an MVP — Slide Deck</span>
+            <span className="text-xs text-stone-400 shrink-0">docs.google.com</span>
+          </Link>
+
           <div className="space-y-6">
             {categories.map((category) => (
               <div key={category.label}>
